@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/main")
-public class mainController implements mainControllerInterface{
-    public String mainMethod() {
-        return "mainMethodReturned";
-    }
+@RequestMapping("/default")
+public interface mainControllerInterface {
+    @GetMapping()
+    public String mainMethod();
 }
