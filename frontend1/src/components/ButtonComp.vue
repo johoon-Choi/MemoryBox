@@ -1,9 +1,10 @@
 <template>
   <div
     :class="{
-      'button-container__default' : buttonType === 0,
-      'button-container__white' : buttonType === 1
+      'button-container-default' : buttonType === 0,
+      'button-container-white' : buttonType === 1
     }"
+    @click = "clickBtn"
   >
     {{ buttonContent }}
   </div>
@@ -25,35 +26,38 @@ export default {
   },
   methods: {
     clickBtn() {
-      this.$emit('btnClicked');
+      this.$emit('btnClicked', this.buttonContent);
     },
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .button-container {
-    display: inline-block;
-    padding: 4px;
+  @mixin common-state {
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 1px;
+  }
+  .button-container-default {
+    @include common-state;
 
-    &__default {
-      background-color: rgba(142, 142, 142, 1.0);
-      border: 1px solid rgba(217, 217, 217, 1.0);
+    background-color: rgba(142, 142, 142, 1.0);
+    border: 1px solid rgba(217, 217, 217, 1.0);
 
-      font-size: 8px;
-      color: rgba(255, 255, 255, 1.0);
+    color: rgba(255, 255, 255, 1.0);
+  }
 
-      border-radius: 4px;
-    }
+  .button-container-default:hover {
+    @include common-state;
 
-    &__default:hover {
-      background-color: rgba(166, 166, 166, 1.0);
-      border: 1px solid rgba(100, 100, 100, 1.0);
+    background-color: rgba(222, 222, 222, 1.0);
+    border: 1px solid rgba(37, 42, 169, 0.5);
 
-      font-size: 8px;
-      color: rgba(0, 0, 0, 1.0);
+    color: rgba(0, 0, 0, 1.0);
 
-      border-radius: 4px;
-    }
+    cursor: pointer;
   }
 </style>
