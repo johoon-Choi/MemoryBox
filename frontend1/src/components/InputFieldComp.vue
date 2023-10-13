@@ -8,7 +8,8 @@
       v-model="input"
       type="text"
       class="input-field-default-container__input-box"
-      @keydown="handleKeyDown($event)"
+      :placeholder="placeholderContent"
+      @keyup="handleKeyDown($event)"
     >
     <div
       v-if="hasSubmitButton"
@@ -46,6 +47,10 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    placeholderContent: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -56,7 +61,7 @@ export default {
   methods: {
     handleKeyDown(event) {
       console.log("Key downed! event: " + event.key);
-      if ("Enter" === event.key) {
+      if (!this.hasSubmitButton) {
         this.handleButtonClick();
       }
     },

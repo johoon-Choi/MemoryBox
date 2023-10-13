@@ -20,31 +20,50 @@
     <div class="test-container__input-field-part">
       <input-field-comp
           @getInputMessage="handleInputMessage"
+          :placeholder-content="'a'"
       />
     </div>
     <div class="test-container__input-field-part">
       <input-field-comp
         :has-submit-button="true"
+        :placeholder-content="'b'"
         @getInputMessage="handleInputMessage"
       >
       </input-field-comp>
     </div>
+    <a class="test-container__content"> Input Message: {{inputMessage}}</a>
+
+    <br>
+    <br>
+    <a class="test-container__title"># block Types</a>
+    <block-comp
+        class="test-container__block"
+      :block-type="1"
+    >
+      <div class="test-container__block__block-inside"></div>
+    </block-comp>
   </div>
 </template>
 
 <script>
 import ButtonComp from "@/components/ButtonComp.vue";
 import InputFieldComp from "@/components/InputFieldComp.vue";
+import BlockComp from "@/components/BlockComp.vue";
 
 export default {
   name: "TestView",
-  components: {InputFieldComp, ButtonComp},
+  components: {BlockComp, InputFieldComp, ButtonComp},
+  data() {
+    return {
+      inputMessage: "",
+    }
+  },
   methods: {
     handleButtonClick(buttonContent) {
       console.log("Button clicked! Content: " + buttonContent);
     },
     handleInputMessage(inputMessage) {
-      console.log("Input Message: " + inputMessage);
+      this.inputMessage = inputMessage;
     }
   },
 }
@@ -61,6 +80,7 @@ export default {
     margin: 8px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 
     &__title {
       display: flex;
@@ -75,6 +95,14 @@ export default {
     &__input-field-part {
       @include part-common;
 
+      width: 200px;
+      height: 40px;
+    }
+
+    &__content {
+    }
+
+    &__block {
       width: 200px;
       height: 40px;
     }

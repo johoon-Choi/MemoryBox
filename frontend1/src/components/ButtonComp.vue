@@ -39,8 +39,8 @@ export default {
   @import "@/assets/css/HoverCommon.scss";
 
   @mixin common-state {
-    width: min-content;
-    height: min-content;
+    width: 100%;
+    height: 100%;
     padding: 2px;
     border-radius: 4px;
     white-space: nowrap;
