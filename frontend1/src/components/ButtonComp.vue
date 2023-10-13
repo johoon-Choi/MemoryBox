@@ -1,16 +1,18 @@
 <template>
-  <div
-    :class="{
-      'button-container-default' : buttonType === 0,
-      'button-container-white' : buttonType === 1
-    }"
-    @click = "clickBtn"
-  >
-    {{ buttonContent }}
+  <div class="button-container">
+    <div
+      @click="clickBtn"
+      :class="{
+      'button-container__default' : buttonType === 0,
+      'button-container__white' : buttonType === 1
+    }">
+      {{ buttonContent }}
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "ButtonComp",
   props: {
@@ -26,6 +28,7 @@ export default {
   },
   methods: {
     clickBtn() {
+      console.log(" button type : " + this.buttonType);
       this.$emit('btnClicked', this.buttonContent);
     },
   }
@@ -33,31 +36,59 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "@/assets/css/HoverCommon.scss";
+
   @mixin common-state {
-    width: 100%;
-    height: 100%;
+    width: min-content;
+    height: min-content;
     padding: 2px;
     border-radius: 4px;
     white-space: nowrap;
-    font-size: 1px;
-  }
-  .button-container-default {
-    @include common-state;
-
-    background-color: rgba(142, 142, 142, 1.0);
-    border: 1px solid rgba(217, 217, 217, 1.0);
-
-    color: rgba(255, 255, 255, 1.0);
+    font-size: 100%;
   }
 
-  .button-container-default:hover {
-    @include common-state;
+  .button-container {
+    display: flex;
 
-    background-color: rgba(222, 222, 222, 1.0);
-    border: 1px solid rgba(37, 42, 169, 0.5);
+    &__default {
+      @include common-state;
 
-    color: rgba(0, 0, 0, 1.0);
+      background-color: rgba(142, 142, 142, 1.0);
+      border: 1px solid rgba(217, 217, 217, 1.0);
 
-    cursor: pointer;
+      color: rgba(255, 255, 255, 1.0);
+    }
+
+    &__default:hover {
+      @include common-state;
+      @include hover-common;
+
+      background-color: rgba(222, 222, 222, 1.0);
+
+      color: rgba(0, 0, 0, 1.0);
+
+      cursor: pointer;
+    }
+
+    &__white {
+      @include common-state;
+
+      background-color: rgba(217, 217, 217, 1.0);
+      border: transparent;
+
+      color: rgba(0, 0, 0, 1.0);
+    }
+
+    &__white:hover {
+      @include common-state;
+      @include hover-common;
+
+      background-color: rgba(111, 111, 111, 1.0);
+      border: transparent;
+
+      color: rgba(0, 0, 0, 1.0);
+
+      cursor: pointer;
+    }
   }
 </style>
