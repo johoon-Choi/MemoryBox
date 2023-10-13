@@ -42,6 +42,24 @@
     >
       <div class="test-container__block__block-inside"></div>
     </block-comp>
+
+    <br>
+    <br>
+    <a class="test-container__title"># Row Line</a>
+    <row-line></row-line>
+
+    <br>
+    <br>
+    <a class="test-container__title"># Col Line</a>
+    <div class="test-container__col-test">
+      <div class="test-container__col-test__temp-block">
+        aaa
+      </div>
+      <col-line></col-line>
+      <div class="test-container__col-test__temp-block">
+        bbb
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,10 +67,12 @@
 import ButtonComp from "@/components/ButtonComp.vue";
 import InputFieldComp from "@/components/InputFieldComp.vue";
 import BlockComp from "@/components/BlockComp.vue";
+import RowLine from "@/components/RowLine.vue";
+import ColLine from "@/components/ColLine.vue";
 
 export default {
   name: "TestView",
-  components: {BlockComp, InputFieldComp, ButtonComp},
+  components: {ColLine, RowLine, BlockComp, InputFieldComp, ButtonComp},
   data() {
     return {
       inputMessage: "",
@@ -105,6 +125,14 @@ export default {
     &__block {
       width: 200px;
       height: 40px;
+    }
+
+    &__col-test {
+      display: flex;
+
+      &__temp-block {
+        display: flex;
+      }
     }
   }
 </style>

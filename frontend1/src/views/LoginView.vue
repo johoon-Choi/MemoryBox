@@ -4,23 +4,26 @@
       <h1 class="login-container__login-box__title">Login To Memory Box</h1>
       <input-field-comp
           class="login-container__login-box__input-field"
+          @getInputMessage="handleIdInput"
           :placeholder-content="'input id'"
       >
       </input-field-comp>
       <input-field-comp
           class="login-container__login-box__input-field"
+          @getInputMessage="handlePasswordInput"
           :placeholder-content="'input password'"
       >
       </input-field-comp>
       <button-comp
           class="login-container__login-box__login-button"
         button-content="Log-in"
+          @btnClicked="doLogIn"
       ></button-comp>
       <a class="login-container__login-box__or">OR</a>
 
       <div
         class="login-container__login-box__social-button"
-        @click="login('Google')"
+        @click="doSocialLogin('Google')"
       >
         <div class="login-container__login-box__social-button__google-logo">
         </div>
@@ -31,12 +34,29 @@
 
       <div
           class="login-container__login-box__social-button"
-          @click="login('Naver')"
+          @click="doSocialLogin('Naver')"
       >
         <div class="login-container__login-box__social-button__naver-logo">
         </div>
         <div>
           Continue with Naver
+        </div>
+      </div>
+
+      <row-line class="login-container__login-box__row-line"></row-line>
+
+      <div class="login-container__login-box__foot">
+        <div class="login-container__login-box__foot__side"
+          @click="doSignUp"
+        >
+          Do you want to Sign up?
+        </div>
+        <col-line></col-line>
+        <div
+          class="login-container__login-box__foot__side"
+          @click="findPassword"
+        >
+          Lost your password?
         </div>
       </div>
     </div>
@@ -46,13 +66,37 @@
 <script>
 import ButtonComp from "@/components/ButtonComp.vue";
 import InputFieldComp from "@/components/InputFieldComp.vue";
+import RowLine from "@/components/RowLine.vue";
+import ColLine from "@/components/ColLine.vue";
 
 export default {
   name: "LoginView",
-  components: {ButtonComp, InputFieldComp},
+  components: {ColLine, RowLine, ButtonComp, InputFieldComp},
+  data() {
+    return {
+      id: "",
+      pw: ""
+    }
+  },
   methods: {
-    login(target) {
-      console.log(" button target: " + target);
+    handleIdInput(id) {
+      this.id = id;
+    },
+    handlePasswordInput(pw) {
+      this.pw = pw;
+    },
+    doLogIn() {
+      console.log(" id: " + this.id);
+      console.log(" pw: " + this.pw);
+    },
+    doSocialLogin(target) {
+      console.log(" TARGET: " + target);
+    },
+    doSignUp() {
+      console.log(" need to sign up");
+    },
+    findPassword() {
+      console.log(" need to find pw");
     }
   }
 }
@@ -85,8 +129,6 @@ export default {
 
       width: 400px;
       height: 400px;
-
-      border: 1px solid rgba(0, 0, 0, 0.1);
 
       &__title {
         color: rgba(37, 42, 169, 1.0);
@@ -138,6 +180,21 @@ export default {
         &__naver-logo {
           @include logo-common;
           background-image: url("@/assets/icons/NaverLogo.png");
+        }
+      }
+
+      &__row-line {
+        margin: 8px 0;
+      }
+
+      &__foot {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        &__side {
+          display: flex;
+          cursor: pointer;
         }
       }
     }
