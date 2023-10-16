@@ -65,7 +65,7 @@
 
 <script>
 import ButtonComp from "@/components/ButtonComp.vue";
-import InputFieldComp from "@/components/InputFieldComp.vue";
+import InputFieldComp from "@/components/InputFieldComp2.vue";
 import BlockComp from "@/components/BlockComp.vue";
 import RowLine from "@/components/RowLine.vue";
 import ColLine from "@/components/ColLine.vue";
@@ -116,7 +116,7 @@ export default {
       @include part-common;
 
       width: 200px;
-      height: 40px;
+      height: 60px;
     }
 
     &__content {
