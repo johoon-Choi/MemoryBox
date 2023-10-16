@@ -68,8 +68,6 @@ export default {
 
       background-color: rgba(222, 222, 222, 1.0);
 
-      color: rgba(0, 0, 0, 1.0);
-
       cursor: pointer;
     }
 
@@ -88,8 +86,6 @@ export default {
 
       background-color: rgba(111, 111, 111, 1.0);
       border: transparent;
-
-      color: rgba(0, 0, 0, 1.0);
 
       cursor: pointer;
     }

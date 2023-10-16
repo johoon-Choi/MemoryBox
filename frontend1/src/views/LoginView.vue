@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-container__login-box">
-      <h1 class="login-container__login-box__title">Login To Memory Box</h1>
+      <h1 class="login-container__login-box__title">"Login To Memory Box"</h1>
       <input-field-comp
           class="login-container__login-box__input-field"
           @getInputMessage="handleIdInput"
@@ -131,11 +131,12 @@ export default {
       height: 400px;
 
       &__title {
+        font-family: cursive;
         color: rgba(37, 42, 169, 1.0);
         font-size: 20px;
         font-weight: bolder;
 
-        margin: 0 0 12px 0;
+        margin: 0 0 32px 0;
       }
 
       &__input-field {
@@ -154,7 +155,7 @@ export default {
       &__or {
         color: rgba(0, 0, 0, 1.0);
         margin: 0 0 32px 0;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bolder;
       }
 
@@ -184,7 +185,7 @@ export default {
       }
 
       &__row-line {
-        margin: 8px 0;
+        margin: 28px 0 8px 0;
       }
 
       &__foot {
@@ -195,6 +196,14 @@ export default {
         &__side {
           display: flex;
           cursor: pointer;
+          font-size: 14px;
+          padding: 1px 8px 1px 8px;
+          border: 1px solid rgba(255, 255, 255, 1.0);
+
+          &:hover {
+            background-color: rgba(222, 222, 222, 1.0);
+            border-radius: 16px;
+          }
         }
       }
     }

@@ -114,10 +114,10 @@ export default {
   }
 
   .input-field-default-container:hover {
-    @include hover-common;
+    @include input-field-hover-common;
   }
 
   .input-field-default-container:focus-within {
-    @include hover-common;
+    @include input-field-hover-common;
   }
 </style>
