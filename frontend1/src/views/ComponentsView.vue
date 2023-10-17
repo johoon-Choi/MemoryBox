@@ -1,21 +1,40 @@
 <template>
   <div class="test-container">
-    <a class="test-container__title"># Button Types</a>
+    <a class="test-container__title"># Buttons</a>
     <div class="test-container__button-part">
       <ButtonComp
-          button-content="default button"
+          button-content="DefaultBtn"
           @btnClicked="handleButtonClick"
       ></ButtonComp>
     </div>
     <div class="test-container__button-part">
       <ButtonComp
-          button-content="button 1"
+          button-content="BlueBtn"
           :button-type="1"
           @btnClicked="handleButtonClick"
       ></ButtonComp>
     </div>
+    <div class="test-container__button-part">
+      <ButtonComp
+          button-content="DefaultConfirmBtn"
+          :need-confirm="true"
+          @btnClicked="handleButtonClick"
+      ></ButtonComp>
+    </div>
+    <div class="test-container__button-part">
+      <ButtonComp
+          button-content="BlueConfirmBtn"
+          :button-type="1"
+          :need-confirm="true"
+          @btnClicked="handleButtonClick"
+      ></ButtonComp>
+    </div>
+    <div class="test-container__result">
+      Clicked Button: {{ clickedButton }}
+    </div>
+
     <br>
-    <br>
+
     <a class="test-container__title"># Input Fields</a>
     <div class="test-container__input-field-part">
       <input-field-comp
@@ -76,11 +95,12 @@ export default {
   data() {
     return {
       inputMessage: "",
+      clickedButton: "",
     }
   },
   methods: {
     handleButtonClick(buttonContent) {
-      console.log("Button clicked! Content: " + buttonContent);
+      this.clickedButton = buttonContent;
     },
     handleInputMessage(inputMessage) {
       this.inputMessage = inputMessage;
@@ -105,7 +125,13 @@ export default {
     &__title {
       display: flex;
       font-size: 20px;
-      margin: 2px 0;
+      margin: 4px 0;
+    }
+
+    &__result {
+      display: flex;
+      font-size: 12px;
+      margin: 4px 0;
     }
 
     &__button-part {

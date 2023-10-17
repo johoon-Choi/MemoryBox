@@ -2,17 +2,10 @@
   <div class="button-container">
     <div
       @click="clickBtn"
-      v-if="!needConfirm || !isClicked"
       :class="{
       'button-container__default' : buttonType === 0,
-      'button-container__blue' : buttonType === 1
+      'button-container__white' : buttonType === 1
     }">
-      {{ buttonContent }}
-    </div>
-    <div
-      v-else-if="isClicked && needConfirm"
-      class="button-container__confirmed"
-    >
       {{ buttonContent }}
     </div>
   </div>
@@ -32,20 +25,10 @@ export default {
       type: String,
       required: true,
     },
-    needConfirm: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
-  },
-  data() {
-    return {
-      isClicked: false,
-    }
   },
   methods: {
     clickBtn() {
-      this.isClicked = true;
+      console.log(" button type : " + this.buttonType);
       this.$emit('btnClicked', this.buttonContent);
     },
   }
@@ -59,16 +42,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     height: 100%;
-
-    padding: 4px 12px;
-    border-radius: 32px;
-
+    padding: 2px;
+    border-radius: 4px;
     white-space: nowrap;
-
-    font-size: 12px;
+    font-size: 100%;
   }
 
   .button-container {
@@ -76,36 +55,39 @@ export default {
 
     &__default {
       @include common-state;
-      background-color: #828282;
-      color: #FFFFFF;
+
+      background-color: rgba(142, 142, 142, 1.0);
+      border: 1px solid rgba(217, 217, 217, 1.0);
+
+      color: rgba(255, 255, 255, 1.0);
     }
 
     &__default:hover {
       @include common-state;
-      background-color: #D9D9D9;
+      @include hover-common;
+
+      background-color: rgba(222, 222, 222, 1.0);
+
       cursor: pointer;
     }
 
-    &__blue {
+    &__white {
       @include common-state;
-      background-color: #5C63FF;
-      color: #FFFFFF;
+
+      background-color: rgba(217, 217, 217, 1.0);
+      border: transparent;
+
+      color: rgba(0, 0, 0, 1.0);
     }
 
-    &__blue:hover {
+    &__white:hover {
       @include common-state;
-      background-color: #ABAEFF;
+      @include hover-common;
+
+      background-color: rgba(111, 111, 111, 1.0);
+      border: transparent;
+
       cursor: pointer;
-    }
-
-    &__confirmed {
-      @include common-state;
-      background-color: #00C52B;
-      color: transparent;
-      background-image: url("@/assets/icons/Confirmed2.png");
-      background-size: auto 16px;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
     }
   }
 </style>

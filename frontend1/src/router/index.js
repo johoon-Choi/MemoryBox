@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import LoginView from "@/views/LoginView.vue";
-import TestView from "@/views/TestView.vue";
+import TestView from "@/views/ComponentsView.vue";
 
 Vue.use(VueRouter);
 
@@ -12,8 +12,8 @@ const routes = [
         component: LoginView,
     },
     {
-        path: '/test',
-        name: 'test',
+        path: '/comps',
+        name: 'comps',
         component: TestView,
     }
 ];
