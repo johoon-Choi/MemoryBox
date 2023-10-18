@@ -34,6 +34,10 @@
     </div>
 
     <br>
+    <a class="test-container__title"># DropBox</a>
+    <div class="test-container__drop-box-part">
+      <drop-box></drop-box>
+    </div>
 
     <a class="test-container__title"># Input Fields</a>
     <div class="test-container__input-field-part">
@@ -88,10 +92,11 @@ import InputFieldComp from "@/components/InputFieldComp.vue";
 import BlockComp from "@/components/BlockComp.vue";
 import RowLine from "@/components/RowLine.vue";
 import ColLine from "@/components/ColLine.vue";
+import DropBox from "@/components/DropBox.vue";
 
 export default {
   name: "TestView",
-  components: {ColLine, RowLine, BlockComp, InputFieldComp, ButtonComp},
+  components: {DropBox, ColLine, RowLine, BlockComp, InputFieldComp, ButtonComp},
   data() {
     return {
       inputMessage: "",
@@ -136,6 +141,12 @@ export default {
 
     &__button-part {
       @include part-common;
+    }
+
+    &__drop-box-part {
+      @include part-common;
+      width: 100px;
+      height: 30px;
     }
 
     &__input-field-part {

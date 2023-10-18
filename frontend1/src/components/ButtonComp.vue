@@ -106,6 +106,10 @@ export default {
       background-size: auto 16px;
       background-repeat: no-repeat;
       background-position: 50% 50%;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+
     }
   }
 </style>
